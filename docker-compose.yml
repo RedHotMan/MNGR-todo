@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  api:
+    container_name: 'mngr_api'
+    build:
+      context: ./
+    ports:
+      - 3003:3003
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/api
+      - /usr/src/api/node_modules/
+
+  mongo:
+    container_name: 'mngr_database'
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - database:/data/db
+
+  mongoclient:
+    container_name: 'mngr_database_client'
+    image: mongoclient/mongoclient
+    depends_on:
+      - mongo
+    ports:
+      - 3000:3000
+
+volumes:
+  database:
