@@ -8,6 +8,10 @@ export class TodoService {
   constructor(@InjectModel(Todo.name) private todoModel: Model<Todo>) {}
 
   async findAll(): Promise<Todo[]> {
-    return await this.todoModel.find().exec();
+    return await this.todoModel.find();
+  }
+
+  async createTodo(name: string): Promise<Todo> {
+    return await this.todoModel.create({ name: name, finished: false });
   }
 }

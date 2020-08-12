@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { TodoService } from './todo.service';
 import { Todo } from './todo.schema';
 
@@ -14,5 +14,10 @@ export class TodoResolver {
   @Query()
   async todos(): Promise<Todo[]> {
     return await this.todoService.findAll();
+  }
+
+  @Mutation()
+  async createTodo(@Args('name') name: string): Promise<Todo> {
+    return await this.todoService.createTodo(name);
   }
 }

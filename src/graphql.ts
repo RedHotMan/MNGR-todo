@@ -16,3 +16,7 @@ export interface IQuery {
     todos(): Todo[] | Promise<Todo[]>;
     hello(): string | Promise<string>;
 }
+
+export interface IMutation {
+    createTodo(name: string): Todo | Promise<Todo>;
+}

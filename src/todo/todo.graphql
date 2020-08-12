@@ -11,3 +11,7 @@ type Query {
 type Query {
   hello: String!
 }
+
+type Mutation {
+  createTodo(name: String!): Todo
+}
