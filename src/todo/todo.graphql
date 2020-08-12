@@ -15,3 +15,7 @@ type Query {
 type Mutation {
   createTodo(name: String!): Todo
 }
+
+type Mutation {
+  toggleFinishedTodo(id: ID!): Todo
+}

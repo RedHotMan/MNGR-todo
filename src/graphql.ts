@@ -19,4 +19,5 @@ export interface IQuery {
 
 export interface IMutation {
     createTodo(name: string): Todo | Promise<Todo>;
+    toggleFinishedTodo(id: string): Todo | Promise<Todo>;
 }

@@ -14,4 +14,16 @@ export class TodoService {
   async createTodo(name: string): Promise<Todo> {
     return await this.todoModel.create({ name: name, finished: false });
   }
+
+  async toggleFinishedTodo(id: string): Promise<Todo> {
+    // Update this function because it doing twice the retrieving of the concerned todo... not good at all
+    const todo = await this.todoModel.findById(id);
+    return await this.todoModel.findByIdAndUpdate(
+      id,
+      {
+        finished: !todo.finished,
+      },
+      { new: true },
+    );
+  }
 }
