@@ -28,4 +28,9 @@ export class TodoResolver {
   async toggleFinishedTodo(@Args('id') id: string): Promise<Todo> {
     return await this.todoService.toggleFinishedTodo(id);
   }
+
+  @Mutation()
+  async deleteTodo(@Args('id') id: string): Promise<Todo[]> {
+    return await this.todoService.deleteTodo(id);
+  }
 }

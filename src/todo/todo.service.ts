@@ -21,4 +21,11 @@ export class TodoService {
       await doc.save();
     });
   }
+
+  async deleteTodo(id: string): Promise<Todo[]> {
+    const x = await this.todoModel.findById(id);
+    console.log(x);
+    await this.todoModel.deleteOne({ id });
+    return await this.todoModel.find();
+  }
 }
