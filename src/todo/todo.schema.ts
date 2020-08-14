@@ -6,7 +6,7 @@ export class Todo extends Document {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true, default: false })
+  @Prop({ default: false })
   finished: boolean;
 }
 export const TodoSchema = SchemaFactory.createForClass(Todo);

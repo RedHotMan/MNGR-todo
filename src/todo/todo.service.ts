@@ -11,8 +11,8 @@ export class TodoService {
     return await this.todoModel.find();
   }
 
-  async createTodo(name: string): Promise<Todo> {
-    return await this.todoModel.create({ name: name, finished: false });
+  async createTodo(name: string, finished: boolean): Promise<Todo> {
+    return await this.todoModel.create({ name, finished });
   }
 
   async toggleFinishedTodo(id: string): Promise<Todo> {
