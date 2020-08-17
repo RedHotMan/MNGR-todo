@@ -6,15 +6,20 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export interface Tag {
+    name: string;
+}
+
+export interface IQuery {
+    tags(): Tag[] | Promise<Tag[]>;
+    todos(): Todo[] | Promise<Todo[]>;
+    hello(): string | Promise<string>;
+}
+
 export interface Todo {
     id: string;
     name: string;
     finished: boolean;
-}
-
-export interface IQuery {
-    todos(): Todo[] | Promise<Todo[]>;
-    hello(): string | Promise<string>;
 }
 
 export interface IMutation {
