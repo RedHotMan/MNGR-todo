@@ -16,10 +16,16 @@ export class TodoService {
   }
 
   async toggleFinishedTodo(id: string): Promise<Todo> {
-    return await this.todoModel.findById(id, async (_, doc) => {
+    await this.todoModel.findById(id, async (_, doc) => {
       doc.finished = !doc.finished;
-      await doc.save();
+      await doc.save(err => {
+        if (err) {
+          throw new Error(err);
+        }
+      });
     });
+
+    return this.todoModel.findById(id);
   }
 
   async deleteTodo(id: string): Promise<Todo[]> {
