@@ -10,4 +10,8 @@ export class TagService {
   async findAll(): Promise<Tag[]> {
     return await this.tagModel.find();
   }
+
+  async createTag(name: string): Promise<Tag> {
+    return await this.tagModel.create({ name });
+  }
 }

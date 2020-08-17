@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { Tag } from './tag.schema';
 import { TagService } from './tag.service';
 
@@ -9,5 +9,10 @@ export class TagResolver {
   @Query()
   async tags(): Promise<Tag[]> {
     return await this.tagService.findAll();
+  }
+
+  @Mutation()
+  async createTag(@Args('name') name: string): Promise<Tag> {
+    return await this.tagService.createTag(name);
   }
 }

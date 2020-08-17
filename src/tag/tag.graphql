@@ -5,3 +5,7 @@ type Tag {
 type Query {
   tags: [Tag]!
 }
+
+type Mutation {
+  createTag(name: String!): Tag
+}

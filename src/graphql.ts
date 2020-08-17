@@ -16,14 +16,15 @@ export interface IQuery {
     hello(): string | Promise<string>;
 }
 
+export interface IMutation {
+    createTag(name: string): Tag | Promise<Tag>;
+    createTodo(name: string): Todo | Promise<Todo>;
+    toggleFinishedTodo(id: string): Todo | Promise<Todo>;
+    deleteTodo(id: string): Todo[] | Promise<Todo[]>;
+}
+
 export interface Todo {
     id: string;
     name: string;
     finished: boolean;
-}
-
-export interface IMutation {
-    createTodo(name: string): Todo | Promise<Todo>;
-    toggleFinishedTodo(id: string): Todo | Promise<Todo>;
-    deleteTodo(id: string): Todo[] | Promise<Todo[]>;
 }
