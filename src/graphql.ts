@@ -7,6 +7,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface Tag {
+    id: string;
     name: string;
 }
 
