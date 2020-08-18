@@ -2,7 +2,7 @@ type Todo {
   id: ID!
   name: String!
   finished: Boolean!
-  tag: Tag
+  tag: Tag!
 }
 
 type Query {

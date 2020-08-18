@@ -28,5 +28,5 @@ export interface Todo {
     id: string;
     name: string;
     finished: boolean;
-    tag?: Tag;
+    tag: Tag;
 }
