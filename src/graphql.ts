@@ -19,7 +19,7 @@ export interface IQuery {
 
 export interface IMutation {
     createTag(name: string): Tag | Promise<Tag>;
-    createTodo(name: string): Todo | Promise<Todo>;
+    createTodo(name: string, tagId: string, finished?: boolean): Todo | Promise<Todo>;
     toggleFinishedTodo(id: string): Todo | Promise<Todo>;
     deleteTodo(id: string): Todo[] | Promise<Todo[]>;
 }

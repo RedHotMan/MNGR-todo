@@ -19,9 +19,10 @@ export class TodoResolver {
   @Mutation()
   async createTodo(
     @Args('name') name: string,
+    @Args('tagId') tagId: string,
     @Args('finished') finished: boolean,
   ): Promise<Todo> {
-    return await this.todoService.createTodo(name, finished);
+    return await this.todoService.createTodo(name, tagId, finished);
   }
 
   @Mutation()

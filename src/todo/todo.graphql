@@ -2,6 +2,7 @@ type Todo {
   id: ID!
   name: String!
   finished: Boolean!
+  tag: Tag
 }
 
 type Query {
@@ -13,7 +14,7 @@ type Query {
 }
 
 type Mutation {
-  createTodo(name: String!): Todo
+  createTodo(name: String!, tagId: String!, finished: Boolean): Todo
 }
 
 type Mutation {
