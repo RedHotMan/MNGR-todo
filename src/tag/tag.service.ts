@@ -14,4 +14,8 @@ export class TagService {
   async createTag(name: string): Promise<Tag> {
     return await this.tagModel.create({ name });
   }
+
+  async findTag(id: string): Promise<Tag> {
+    return await this.tagModel.findById(id);
+  }
 }
