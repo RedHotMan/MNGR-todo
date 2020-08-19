@@ -6,10 +6,10 @@
 
 ## Stack
 
-- [NestJS](iasdius)
-- [GraphQl](iasdius)
-- [MongoDb](iasdius)
-- [Docker (docker-compose)](dksaudis)
+- [NestJS](https://docs.nestjs.com/)
+- [GraphQl](https://docs.nestjs.com/graphql/quick-start)
+- [MongoDb](https://docs.nestjs.com/techniques/mongodb)
+- [Docker (docker-compose)](https://docs.docker.com/compose/)
 
 ## Installation
 
