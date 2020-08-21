@@ -1,18 +1,37 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 import { TagResolver } from './tag.resolver';
+import { TagService } from './tag.service';
+import { Tag } from './tag.schema';
+import { getModelToken } from '@nestjs/mongoose';
 
-describe('TagResolver', () => {
-  let resolver: TagResolver;
+describe('TagService', () => {
+  let tagResolver: TagResolver;
+  const mockTagModel = {};
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [TagResolver],
+    const moduleRef = await Test.createTestingModule({
+      providers: [
+        TagService,
+        TagResolver,
+        {
+          provide: getModelToken(Tag.name),
+          useValue: mockTagModel,
+        },
+      ],
     }).compile();
 
-    resolver = module.get<TagResolver>(TagResolver);
+    tagResolver = moduleRef.get<TagResolver>(TagResolver);
   });
 
-  it('should be defined', () => {
-    expect(resolver).toBeDefined();
+  describe('find all tags', () => {
+    const mockedTags = [{ id: 'qwert', name: 'dasdds' }];
+
+    it('Should return an array of tags', async () => {
+      jest
+        .spyOn(tagResolver, 'tags')
+        .mockImplementation(() => Promise.resolve(mockedTags));
+
+      expect(await tagResolver.tags()).toBe(mockedTags);
+    });
   });
 });
