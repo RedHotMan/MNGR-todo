@@ -24,7 +24,7 @@ describe('TagService', () => {
   });
 
   describe('find all tags', () => {
-    const mockedTags = [{ id: 'qwert', name: 'dasdds' }];
+    const mockedTags = [{ id: 'qwerty', name: 'Family' }];
 
     it('Should return an array of tags', async () => {
       jest
@@ -32,6 +32,18 @@ describe('TagService', () => {
         .mockImplementation(() => Promise.resolve(mockedTags));
 
       expect(await tagResolver.tags()).toBe(mockedTags);
+    });
+  });
+
+  describe('create a Tag and return its value', () => {
+    const mockedTag = { id: 'qwerty', name: 'Work' };
+
+    it('should return a single new Tag', async () => {
+      jest
+        .spyOn(tagResolver, 'createTag')
+        .mockImplementation(() => Promise.resolve(mockedTag));
+
+      expect(await await tagResolver.createTag(mockedTag.name)).toBe(mockedTag);
     });
   });
 });
