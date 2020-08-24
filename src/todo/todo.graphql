@@ -18,9 +18,9 @@ type Mutation {
 }
 
 type Mutation {
-  toggleFinishedTodo(id: ID!): Todo
+  toggleFinishedTodo(id: String!): Todo
 }
 
 type Mutation {
-  deleteTodo(id: ID!): [Todo]
+  deleteTodo(id: String!): [Todo]
 }

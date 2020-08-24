@@ -3,9 +3,6 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Tag extends Document {
-  @Prop()
-  id: string;
-
   @Prop({ requied: true })
   name: string;
 }
