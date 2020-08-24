@@ -2,6 +2,7 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Todo } from './todo.schema';
+import { Todo as TodoInterface } from '../graphql';
 import { TagService } from 'src/tag/tag.service';
 
 @Injectable()
@@ -19,12 +20,12 @@ export class TodoService {
     name: string,
     tagId: string,
     finished: boolean,
-  ): Promise<Todo> {
+  ): Promise<TodoInterface> {
     const tag = await this.tagService.findTag(tagId);
     return await this.todoModel.create({ name, finished, tag });
   }
 
-  async toggleFinishedTodo(id: string): Promise<Todo> {
+  async toggleFinishedTodo(id: string): Promise<TodoInterface> {
     await this.todoModel.findById(id, async (_, doc) => {
       if (doc) {
         doc.finished = !doc.finished;
@@ -41,7 +42,7 @@ export class TodoService {
     return this.todoModel.findById(id);
   }
 
-  async deleteTodo(id: string): Promise<Todo[]> {
+  async deleteTodo(id: string): Promise<TodoInterface[]> {
     await this.todoModel.deleteOne({ _id: id });
     return this.findAll();
   }

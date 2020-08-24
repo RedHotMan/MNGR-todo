@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { Tag } from 'src/tag/tag.schema';
+import { Tag as TagInterface } from 'src/graphql';
 
 @Schema()
 export class Todo extends Document {
@@ -13,7 +13,7 @@ export class Todo extends Document {
   @Prop({ default: false })
   finished: boolean;
 
-  @Prop(Tag)
-  tag: Tag;
+  @Prop()
+  tag: TagInterface;
 }
 export const TodoSchema = SchemaFactory.createForClass(Todo);

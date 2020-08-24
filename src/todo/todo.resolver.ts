@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { TodoService } from './todo.service';
-import { Todo } from './todo.schema';
+import { Todo as TodoInterface } from '../graphql';
 
 @Resolver('Todo')
 export class TodoResolver {
@@ -12,7 +12,7 @@ export class TodoResolver {
   }
 
   @Query()
-  async todos(): Promise<Todo[]> {
+  async todos(): Promise<TodoInterface[]> {
     return await this.todoService.findAll();
   }
 
@@ -21,17 +21,17 @@ export class TodoResolver {
     @Args('name') name: string,
     @Args('tagId') tagId: string,
     @Args('finished') finished: boolean,
-  ): Promise<Todo> {
+  ): Promise<TodoInterface> {
     return await this.todoService.createTodo(name, tagId, finished);
   }
 
   @Mutation()
-  async toggleFinishedTodo(@Args('id') id: string): Promise<Todo> {
+  async toggleFinishedTodo(@Args('id') id: string): Promise<TodoInterface> {
     return await this.todoService.toggleFinishedTodo(id);
   }
 
   @Mutation()
-  async deleteTodo(@Args('id') id: string): Promise<Todo[]> {
+  async deleteTodo(@Args('id') id: string): Promise<TodoInterface[]> {
     return await this.todoService.deleteTodo(id);
   }
 }
